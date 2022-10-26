@@ -13,7 +13,6 @@ include_once("012Empleado.php");
 class Gerente extends Trabajador
 {
 
-    private float $salario;
 
     public static $SUELDO_TOPE = 3333;
 
@@ -21,6 +20,7 @@ class Gerente extends Trabajador
         String $nombre,
         String $apellidos,
         int $edad,
+        private float $salario = 1000
     ) {
         parent::__construct($nombre, $apellidos, $edad);
     }
@@ -47,8 +47,7 @@ class Gerente extends Trabajador
 
     public function calcularSueldo(): float
     {
-        //SALARIO NO HACE FALTA SE QUEDA POR DEFECTO EL SUELDO BASE
-        return $this-> *= $this->edad / 100;
+        return $this->salario *= $this->edad / 100;
     }
 
     
