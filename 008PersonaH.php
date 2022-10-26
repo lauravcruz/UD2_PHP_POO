@@ -31,7 +31,8 @@ class Persona
         return $this->nombre . $this->apellidos;
     }
 
-    public static function toHtml(Persona $p){
+    public static function toHtml(Persona $p): string
+    {
         return "<p>" . $p->getNombreCompleto() . "</p>";
-    } 
+    }
 }

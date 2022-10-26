@@ -88,7 +88,7 @@ class Empleado
 }
 
 /*
-$trabajador1 = new Empleado();
+$trabajador1 = new EmpleadoTelefono();
 
 $trabajador1->setNombre("Laura");
 $trabajador1->setApellidos("Valiente Cruz");

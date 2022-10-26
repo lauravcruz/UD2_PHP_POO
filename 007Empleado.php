@@ -87,6 +87,6 @@ class Empleado extends Persona
             $numeros .= "<li>$numero</li>";
         }
         return "<p>" . $emp->getNombreCompleto() . ". Sueldo: " . $emp->sueldo .  "</p>
-        <ul>" . $numeros  . "</ul>";
+        <ol>" . $numeros  . "</ol>";
     }*/
 }

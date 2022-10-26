@@ -1,12 +1,10 @@
 <?php
 
 declare(strict_types=1);
-/*Copia las clases del ejercicio anterior y modifícalas. Crea en Persona 
-el método estático toHtml(Persona $p), y modifica en Empleado el mismo método 
-toHtml(Persona $p), pero cambia la firma para que reciba una Persona como 
-parámetro. Para acceder a las propiedades del empleado con la persona que recibimos 
-como parámetro, comprobaremos su tipo:*/
-include_once("008PersonaH.php");
+/*Copia las clases del ejercicio anterior y modifícalas.
+Transforma Persona a una clase abstracta donde su método estático toHtml(Persona 
+$p) tenga que ser redefinido en todos sus hijos.*/
+include_once("011PersonaA.php");
 class Empleado extends Persona
 {
     private $telefonos = [];
@@ -15,9 +13,10 @@ class Empleado extends Persona
     public function __construct(
         String $nombre,
         String $apellidos,
+        int $edad,
         private float $sueldo = 1000
     ) {
-        parent::__construct($nombre, $apellidos);
+        parent::__construct($nombre, $apellidos, $edad);
     }
 
     public function getSueldo()
@@ -44,9 +43,12 @@ class Empleado extends Persona
 
     public function debePagarImpuestos(): bool
     {
-        //Para acceder a una propiedad estática del objeto: self::
-        if ($this->sueldo > self::$SUELDO_TOPE) {
-            return true;
+        if (parent::getEdad() > 21) {
+            if ($this->sueldo > self::$SUELDO_TOPE) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
@@ -88,18 +90,24 @@ class Empleado extends Persona
             foreach ($telefonos as $numero) {
                 $numeros .= "<li>$numero</li>";
             }
-            return "<p>" . parent::toHtml($p) . "</p><p>Sueldo: " . $p->sueldo .  "</p>
+            return "<p>" . $p->getNombreCompleto() . "</p><p>Sueldo: " . $p->sueldo .  "</p>
             <ol>" . $numeros  . "</ol>";
         } else {
             //Añado esta línea porque me aparecía el error. El else tenía que retornar algo
-            return "<p>" . parent::toHtml($p) . "</p>";
+            return "<p>" . $p->getNombreCompleto() . "</p>";
         }
+    }
+
+    public function  __toString(): string
+    {
+        return parent::__toString() .  " Sueldo: " . $this->sueldo . "Teléfonos: " . $this->listarTelefonos();
     }
 }
 
-$trabajador1 = new Empleado("Laura", "Valiente Cruz", 4000);
+
+$trabajador1 = new Empleado("Laura", "Valiente Cruz", 28, 4000);
 
 $trabajador1->anyadirTelefono(654227390);
 $trabajador1->anyadirTelefono(29011112);
 
-echo $trabajador1->toHtml($trabajador1);
+echo Empleado::toHtml($trabajador1);

@@ -14,7 +14,7 @@ class Empleado extends Persona
     public function __construct(
         String $nombre,
         String $apellidos,
-        int $edad, 
+        int $edad,
         private float $sueldo = 1000
     ) {
         parent::__construct($nombre, $apellidos, $edad);
@@ -44,15 +44,15 @@ class Empleado extends Persona
 
     public function debePagarImpuestos(): bool
     {
-        if (parent::getEdad() > 21){
+        if (parent::getEdad() > 21) {
             if ($this->sueldo > self::$SUELDO_TOPE) {
                 return true;
             } else {
                 return false;
             }
-        }else{
-            return false; 
-        }        
+        } else {
+            return false;
+        }
     }
 
     public function anyadirTelefono(int $telefono): void
@@ -92,7 +92,7 @@ class Empleado extends Persona
                 $numeros .= "<li>$numero</li>";
             }
             return "<p>" . parent::toHtml($p) . "</p><p>Sueldo: " . $p->sueldo .  "</p>
-            <ul>" . $numeros  . "</ul>";
+            <ol>" . $numeros  . "</ol>";
         } else {
             //Añado esta línea porque me aparecía el error. El else tenía que retornar algo
             return "<p>" . parent::toHtml($p) . "</p>";

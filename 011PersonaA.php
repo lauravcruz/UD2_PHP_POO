@@ -1,13 +1,11 @@
 <?php
 
 declare(strict_types=1);
-/*Copia las clases del ejercicio anterior y modifícalas.
-Añade en Persona un atributo edad
-A la hora de saber si un empleado debe pagar impuestos, lo hará siempre y cuando 
-tenga más de 21 años y dependa del valor de su sueldo. Modifica todo el código 
-necesario para mostrar y/o editar la edad cuando sea necesario.*/
+/* Copia las clases del ejercicio anterior y modifícalas.
+Transforma Persona a una clase abstracta donde su método estático toHtml(Persona 
+$p) tenga que ser redefinido en todos sus hijos.*/
 
-class Persona
+abstract class Persona
 {
     public function __construct(
         protected String $nombre,
@@ -38,11 +36,13 @@ class Persona
 
     public function getNombreCompleto(): string
     {
-        return $this->nombre . $this->apellidos;
+        return $this->nombre . " " . $this->apellidos;
     }
 
-    public static function toHtml(Persona $p): string
+    abstract public static function toHtml(Persona $p): string; 
+
+    public function __toString(): string
     {
-        return "<p>" . $p->getNombreCompleto() . "</p>";
+        return $this->nombre . " " . $this->apellidos . " Edad: " . $this->edad;
     }
 }

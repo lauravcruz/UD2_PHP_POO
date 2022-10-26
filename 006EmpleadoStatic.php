@@ -99,15 +99,16 @@ class Empleado
             $numeros .= "<li>$numero</li>";
         }
         return "<p>" . $emp->getNombreCompleto() . ". Sueldo: " . $emp->sueldo .  "</p>
-        <ul>" . $numeros  . "</ul>" ;
+        <ol>" . $numeros  . "</ol>" ;
     }
 }
 
 
-/*
+
 $trabajador1 = new Empleado("Laura", "Valiente Cruz", 4000); 
 
 $trabajador1->anyadirTelefono(654227390);
 $trabajador1->anyadirTelefono(29011112);
 
-echo $trabajador1->toHtml($trabajador1); */
+echo Empleado::toHtml($trabajador1); 
+
