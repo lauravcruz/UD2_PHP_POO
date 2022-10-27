@@ -74,7 +74,7 @@ class Empleado
     {
         if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return implode(", ", $this->telefonos);
+            return "Teléfonos: " . implode(", ", $this->telefonos);
         } else {
             return "No hay teléfonos guardados";
         }
@@ -86,12 +86,9 @@ class Empleado
     }
 }
 
-/*
+//PRUEBAS: 
 
-$trabajador = new Empleado("Laura", "Valiente Cruz", 4000); 
-
-echo $trabajador->getNombreCompleto() . $trabajador->getSueldo() . $trabajador->debePagarImpuestos();
-
-$trabajador->setSueldoTope(2000); 
-echo $trabajador->getSueldoTope(); 
-*/
+// $trabajador = new Empleado("Laura", "Valiente Cruz", 4000); 
+// echo $trabajador->getNombreCompleto() . $trabajador->getSueldo() . ", debe pagar: " . intval($trabajador->debePagarImpuestos());
+// $trabajador->setSueldoTope(2000); 
+// echo "<p> " .$trabajador->getSueldoTope() . "</p>"; 

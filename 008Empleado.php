@@ -61,7 +61,7 @@ class Empleado extends Persona
     {
         if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return implode(", ", $this->telefonos);
+            return "Teléfonos: " . implode(", ", $this->telefonos);
         } else {
             return "No hay teléfonos guardados";
         }
@@ -79,7 +79,7 @@ class Empleado extends Persona
 
     public static function toHtml(Persona $p): string
     {
-
+        //Para comprobar el tipo se usa: 
         if ($p instanceof Empleado) {
             $telefonos = $p->getTelefono();
             $numeros = "";
@@ -97,9 +97,10 @@ class Empleado extends Persona
     }
 }
 
-$trabajador1 = new Empleado("Laura", "Valiente Cruz", 4000);
+//PRUEBAS:
+// $trabajador1 = new Empleado("Laura", "Valiente Cruz", 4000);
 
-$trabajador1->anyadirTelefono(654227390);
-$trabajador1->anyadirTelefono(29011112);
+// $trabajador1->anyadirTelefono(666666);
+// $trabajador1->anyadirTelefono(6666666);
 
-echo $trabajador1->toHtml($trabajador1);
+// echo $trabajador1->toHtml($trabajador1);

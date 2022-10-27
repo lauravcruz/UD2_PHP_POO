@@ -64,7 +64,7 @@ class Empleado extends Persona
     {
         if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return implode(", ", $this->telefonos);
+            return "Teléfonos: " . implode(", ", $this->telefonos);
         } else {
             return "No hay teléfonos guardados";
         }
@@ -99,15 +99,17 @@ class Empleado extends Persona
         }
     }
 
+    //Con __toString() podemos acceder a todos las propiedades de las clases e imprimirlas
     public function  __toString(): string
     {
         return parent::__toString() .  " Sueldo: " . $this->sueldo . "Teléfonos: " . $this->listarTelefonos();
     }
 }
 
-$trabajador1 = new Empleado("Laura", "Valiente Cruz", 28, 4000);
+//PRUEBAS:
+// $trabajador1 = new Empleado("Laura", "Valiente Cruz", 28, 4000);
 
-$trabajador1->anyadirTelefono(654227390);
-$trabajador1->anyadirTelefono(29011112);
+// $trabajador1->anyadirTelefono(666666);
+// $trabajador1->anyadirTelefono(6666666);
 
-echo $trabajador1->__toString(); 
+// echo $trabajador1->__toString();

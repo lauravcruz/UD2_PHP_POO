@@ -8,14 +8,11 @@ donde calcularSueldo es un método abstracto de manera que:
 El sueldo de un Empleado se calcula a partir de las horas trabajadas y lo que cobra por 
 hora. Para los Gerentes, su sueldo se incrementa porcentualmente en base a su edad: 
 salario + salario*edad/100*/
-include_once("012Trabajador.php");
-include_once("012Gerente.php");
+
 class Empleado extends Trabajador
 {
-
     private float $horasTrabajadas;
     private float $precioPorHora;
-
     public static $SUELDO_TOPE = 3333;
 
     public function __construct(
@@ -65,26 +62,6 @@ class Empleado extends Trabajador
         return $this->horasTrabajadas * $this->precioPorHora;
     }
 
-    
-    public static function toHtml(Persona $p): string
-    {
-
-        if ($p instanceof Empleado) {
-            $telefonos = $p->getTelefono();
-            $numeros = "";
-
-            //Recorremos los números de teléfono y los vamos guardando en una cadena con su <li>
-            foreach ($telefonos as $numero) {
-                $numeros .= "<li>$numero</li>";
-            }
-            return "<p>" . $p->getNombreCompleto() . "</p><p>Sueldo: " . $p->calcularSueldo() .  "</p>
-            <ol>" . $numeros  . "</ol>";
-        } else {
-            //Añado esta línea porque me aparecía el error. El else tenía que retornar algo
-            return "<p>" . $p->getNombreCompleto() . "</p>";
-        }
-    }
-
     public function  __toString(): string
     {
         return parent::__toString() .  " Sueldo: " . $this->calcularSueldo() . "Teléfonos: " . $this->listarTelefonos();
@@ -93,12 +70,4 @@ class Empleado extends Trabajador
 }
 
 
-$empleado = new Empleado("Laura", "Valiente Cruz", 28);
-$gerente= new Gerente("Dani", "El Gallo", 28);
-
-$empleado->anyadirTelefono(654227390);
-$gerente->anyadirTelefono(29011112);
-
-echo $gerente->__toString(); 
-echo $empleado->__toString();
 

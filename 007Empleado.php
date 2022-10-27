@@ -16,6 +16,7 @@ class Empleado extends Persona
         String $apellidos,
         private float $sueldo = 1000
     ) {
+        //Para usar el constructor de la clase padre: 
         parent::__construct($nombre, $apellidos);
     }
 
@@ -60,7 +61,7 @@ class Empleado extends Persona
     {
         if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return implode(", ", $this->telefonos);
+            return "Teléfonos: " . implode(", ", $this->telefonos);
         } else {
             return "No hay teléfonos guardados";
         }
@@ -77,6 +78,7 @@ class Empleado extends Persona
     }
 
     /* Esta función entra en conflicto con las del ejercicio 8
+    
     public static function toHtml(Empleado $emp): string
     {
         $telefonos = $emp->getTelefono();
@@ -90,3 +92,11 @@ class Empleado extends Persona
         <ol>" . $numeros  . "</ol>";
     }*/
 }
+
+//PRUEBAS
+// $trabajador1 = new Empleado("Laura", "Valiente Cruz", 4000);
+
+// $trabajador1->anyadirTelefono(666666);
+// $trabajador1->anyadirTelefono(6666666);
+
+// echo Empleado::toHtml($trabajador1);

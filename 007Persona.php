@@ -1,10 +1,6 @@
 <?php
 
 declare(strict_types=1);
-/*Copia la clase del ejercicio anterior en 307Empleado.php y 
-modifícala.Crea una clase Persona que sea padre de Empleado, de manera que 
-Persona contenga el nombre y los apellidos, y en Empleado quede el salario y los 
-teléfonos*/
 
 class Persona
 {
@@ -24,6 +20,7 @@ class Persona
         return $this->apellidos;
     }
 
+    //He pasado esta función a la clase padre por una cuestión de orden: usa atributos de aquí
     public function getNombreCompleto(): string
     {
         return $this->nombre . $this->apellidos;

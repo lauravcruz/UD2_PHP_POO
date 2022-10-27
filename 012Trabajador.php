@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 include_once("012Persona.php");
-abstract class Trabajador extends Persona{
+abstract class Trabajador extends Persona
+{
     private $telefonos = [];
-    private static $SUELDO_TOPE = 3333; 
+    private static $SUELDO_TOPE = 3333;
 
     public function anyadirTelefono(int $telefono): void
     {
@@ -14,7 +16,7 @@ abstract class Trabajador extends Persona{
     {
         if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return implode(", ", $this->telefonos);
+            return "Teléfonos: " . implode(", ", $this->telefonos);
         } else {
             return "No hay teléfonos guardados";
         }
@@ -40,6 +42,25 @@ abstract class Trabajador extends Persona{
             }
         } else {
             return false;
+        }
+    }
+
+    public static function toHtml(Persona $p): string
+    {
+
+        if ($p instanceof Trabajador) {
+            $telefonos = $p->getTelefono();
+            $numeros = "";
+
+            //Recorremos los números de teléfono y los vamos guardando en una cadena con su <li>
+            foreach ($telefonos as $numero) {
+                $numeros .= "<li>$numero</li>";
+            }
+            return "<p>" . $p->getNombreCompleto() . "</p><p>Sueldo: " . $p->calcularSueldo() .  "</p>
+            <ol>" . $numeros  . "</ol>";
+        } else {
+            //Añado esta línea porque me aparecía el error. El else tenía que retornar algo
+            return "<p>" . $p->getNombreCompleto() . "</p>";
         }
     }
 

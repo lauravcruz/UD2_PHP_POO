@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /*Crea una clase Empleado con su nombre, apellidos y sueldo. 
 Encapsula las propiedades mediante getters/setters y añade métodos para:
 Obtener su nombre completo → getNombreCompleto(): string
@@ -61,15 +62,14 @@ class Empleado
         }
     }
 }
-/*
-$trabajador1 = new Empleado(); 
 
-$trabajador1 -> setNombre("Laura");
-$trabajador1 ->setApellidos("Valiente Cruz"); 
-$trabajador1 ->setSueldo(5555);
-
-echo $trabajador1 -> getNombre() . ", " . $trabajador1 -> getApellidos() . ", " . $trabajador1->getSueldo() . ", " . $trabajador1->getNombreCompleto() . ", " . $trabajador1->debePagarImpuestos();
-*/
-
+//PRUEBAS: 
+// $trabajador1 = new Empleado(); 
+// $trabajador1 -> setNombre("Laura");
+// $trabajador1 ->setApellidos("Valiente Cruz"); 
+// $trabajador1 ->setSueldo(1000);
+// echo "<p>" . $trabajador1 -> getNombreCompleto() . ", sueldo: " . $trabajador1->getSueldo() . ", debe pagar impuestos: "  . intval($trabajador1->debePagarImpuestos() . "</p>");
+// $trabajador1 ->setSueldo(4000);
+// echo "<p>" . $trabajador1 -> getNombreCompleto() . ", sueldo: " . $trabajador1->getSueldo() . ", debe pagar impuestos: "  . intval($trabajador1->debePagarImpuestos() . "</p>");
 
 

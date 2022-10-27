@@ -74,7 +74,7 @@ class Empleado
     {
         if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return implode(", ", $this->telefonos);
+            return "Teléfonos: " . implode(", ", $this->telefonos);
         } else {
             return "No hay teléfonos guardados";
         }
@@ -90,25 +90,25 @@ class Empleado
         return $this->telefonos;
     }
 
-    public static function toHtml(Empleado $emp): string{
+    public static function toHtml(Empleado $emp): string
+    {
         $telefonos = $emp->getTelefono();
-        $numeros = ""; 
+        $numeros = "";
 
         //Recorremos los números de teléfono y los vamos guardando en una cadena con su <li>
-        foreach($telefonos as $numero){
+        foreach ($telefonos as $numero) {
             $numeros .= "<li>$numero</li>";
         }
         return "<p>" . $emp->getNombreCompleto() . ". Sueldo: " . $emp->sueldo .  "</p>
-        <ol>" . $numeros  . "</ol>" ;
+        <ol>" . $numeros  . "</ol>";
     }
 }
 
 
+//PRUEBAS
+// $trabajador1 = new Empleado("Laura", "Valiente Cruz", 4000);
 
-$trabajador1 = new Empleado("Laura", "Valiente Cruz", 4000); 
+// $trabajador1->anyadirTelefono(666666);
+// $trabajador1->anyadirTelefono(6666666);
 
-$trabajador1->anyadirTelefono(654227390);
-$trabajador1->anyadirTelefono(29011112);
-
-echo Empleado::toHtml($trabajador1); 
-
+// echo Empleado::toHtml($trabajador1);

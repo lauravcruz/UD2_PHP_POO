@@ -14,6 +14,7 @@ class Empleado
     public function __construct(
        private String $nombre,
        private String $apellidos,
+       //Para poner un valor por defecto en el constructor:
        private float $sueldo = 1000
     ){}
 
@@ -62,7 +63,7 @@ class Empleado
     {        
         if(!empty($this->telefonos)){
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return implode(", ", $this->telefonos);
+            return "Teléfonos: " . implode(", ", $this->telefonos);
         }else{
             return "No hay teléfonos guardados"; 
         }
@@ -73,7 +74,8 @@ class Empleado
         unset($this->telefonos);
     }
 }
-/*
-$trabajador = new Empleado("Laura", "Valiente Cruz", 2000); 
 
-echo $trabajador->getNombreCompleto() . $trabajador->getSueldo();
+//PRUEBAS: 
+// $trabajador = new Empleado("Laura", "Valiente Cruz", 2000); 
+
+// echo $trabajador->getNombreCompleto() . ", sueldo: " . $trabajador->getSueldo();

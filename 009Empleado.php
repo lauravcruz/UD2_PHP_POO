@@ -1,10 +1,11 @@
 <?php
 
 declare(strict_types=1);
-/*Copia la clase del ejercicio anterior y modifícala. Completa el 
-siguiente método con una cadena HTML que muestre los datos de un empleado 
-dentro de un párrafo y todos los teléfonos mediante una lista ordenada (para ello, 
-deberás crear un getter para los teléfonos): public static function toHtml(Empleado $emp): string*/
+/*Copia las clases del ejercicio anterior y modifícalas.
+Añade en Persona un atributo edad
+A la hora de saber si un empleado debe pagar impuestos, lo hará siempre y cuando 
+tenga más de 21 años y dependa del valor de su sueldo. Modifica todo el código 
+necesario para mostrar y/o editar la edad cuando sea necesario.*/
 include_once("009PersonaE.php");
 class Empleado extends Persona
 {
@@ -44,12 +45,8 @@ class Empleado extends Persona
 
     public function debePagarImpuestos(): bool
     {
-        if (parent::getEdad() > 21) {
-            if ($this->sueldo > self::$SUELDO_TOPE) {
-                return true;
-            } else {
-                return false;
-            }
+        if (parent::getEdad() > 21 && $this->sueldo > self::$SUELDO_TOPE) {
+            return true;
         } else {
             return false;
         }
@@ -64,7 +61,7 @@ class Empleado extends Persona
     {
         if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return implode(", ", $this->telefonos);
+            return "Teléfonos: " . implode(", ", $this->telefonos);
         } else {
             return "No hay teléfonos guardados";
         }
@@ -99,12 +96,13 @@ class Empleado extends Persona
         }
     }
 }
-/*
-$trabajador1 = new Empleado("Laura", "Valiente Cruz", 28, 4000);
 
-$trabajador1->anyadirTelefono(654227390);
-$trabajador1->anyadirTelefono(29011112);
+//PRUEBAS:
+// $trabajador1 = new Empleado("Laura", "Valiente Cruz", 25, 4000);
 
-echo $trabajador1->toHtml($trabajador1);
-echo $trabajador1->debePagarImpuestos(); 
-*/
+// $trabajador1->anyadirTelefono(666666);
+// $trabajador1->anyadirTelefono(6666666);
+
+// echo $trabajador1->toHtml($trabajador1) . intval($trabajador1->debePagarImpuestos());
+// $trabajador2 = new Empleado("Laura", "Valiente Cruz", 20, 4000);
+// echo $trabajador2->toHtml($trabajador2) . intval($trabajador2->debePagarImpuestos());
