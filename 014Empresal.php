@@ -16,7 +16,6 @@ toSerialize(): string → utiliza la función serialize(mixed)
 Modifica todas las clases que no son abstractas para que implementen el interfaz 
 creado.*/
 
-
 interface JSerializable {
     public function toJSON(): string;
 

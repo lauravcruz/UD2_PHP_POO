@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /*013Empresa.php: Utilizando las clases de los ejercicios anteriores:
 Crea una clase Empresa que además del nombre y la dirección, contenga una 
@@ -14,6 +15,7 @@ método calcularSueldo().*/
 include_once("012Persona.php");
 include_once("012Trabajador.php");
 include_once("012Gerente.php");
+include_once("014Empresal.php");
 class Empresa implements JSerializable
 {
     private String $nombre;
@@ -39,7 +41,7 @@ class Empresa implements JSerializable
 
     public function setDireccion($direccion)
     {
-        $this->nombre = $direccion;
+        $this->direccion = $direccion;
 
         return $this;
     }
@@ -51,17 +53,29 @@ class Empresa implements JSerializable
 
     public function listarTrabajadoresHtml(): string
     {
-        $trabajadoresHTML = ""; 
+        $trabajadoresHTML = "";
         if (!empty($this->trabajadores)) {
 
-            foreach($this->trabajadores as $t){
-                $trabajadoresHTML .= Trabajador::toHtml($t); 
+            foreach ($this->trabajadores as $t) {
+                $trabajadoresHTML .= Trabajador::toHtml($t);
             }
 
-            return $trabajadoresHTML; 
+            return $trabajadoresHTML;
         } else {
             return "No hay trabajadores registrados";
         }
+    }
+
+    public function getTrabajadores()
+    {
+        return $this->trabajadores;
+    }
+
+    public function setTrabajadores($trabajadores)
+    {
+        $this->trabajadores = $trabajadores;
+
+        return $this;
     }
 
     public function getCosteNominas(): float
@@ -73,14 +87,21 @@ class Empresa implements JSerializable
         return $nominas;
     }
 
-    public function toJSON(): string {
-        foreach ($this as $clave => $valor) {
-            $mapa->$clave = $valor;
+    public function toJSON(): string
+    {
+        foreach ($this as $key => $value) {
+            if (is_array($value)) {
+                $map[$key] = implode("<br> ", $value);
+            } else {
+                $map[$key] = $value;
+            }
         }
-        return json_encode($mapa);
+
+        return json_encode($map);
     }
 
-    public function toSerialize(): string {
-        serialize(mixed); 
+    public function toSerialize(): string
+    {
+        return serialize($this);
     }
 }

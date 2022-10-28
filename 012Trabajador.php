@@ -63,6 +63,7 @@ abstract class Trabajador extends Persona
             return "<p>" . $p->getNombreCompleto() . "</p>";
         }
     }
+    
 
     abstract public function calcularSueldo();
 }
