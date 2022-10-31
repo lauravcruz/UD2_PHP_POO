@@ -64,7 +64,7 @@ class Empleado extends Trabajador
 
     public function  __toString(): string
     {
-        return parent::__toString() .  " Sueldo: " . $this->calcularSueldo() . "Teléfonos: " . $this->listarTelefonos();
+        return parent::__toString() .  " Sueldo: " . $this->calcularSueldo() . " Teléfonos: " . $this->listarTelefonos();
     }
     
 }

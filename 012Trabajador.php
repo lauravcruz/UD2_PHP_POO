@@ -16,7 +16,7 @@ abstract class Trabajador extends Persona
     {
         if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return "Teléfonos: " . implode(", ", $this->telefonos);
+            return  implode(", ", $this->telefonos);
         } else {
             return "No hay teléfonos guardados";
         }
@@ -63,7 +63,7 @@ abstract class Trabajador extends Persona
             return "<p>" . $p->getNombreCompleto() . "</p>";
         }
     }
-    
+
 
     abstract public function calcularSueldo();
 }

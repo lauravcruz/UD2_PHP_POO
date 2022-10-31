@@ -23,6 +23,6 @@ class Persona
     //He pasado esta función a la clase padre por una cuestión de orden: usa atributos de aquí
     public function getNombreCompleto(): string
     {
-        return $this->nombre . $this->apellidos;
+        return $this-> nombre . " " . $this->apellidos;
     }
 }

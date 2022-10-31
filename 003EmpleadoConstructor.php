@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /*Copia la clase del ejercicio anterior y modifícala. 
 Elimina los setters de nombre y apellidos, de manera que dichos datos se asignan 
@@ -12,11 +13,12 @@ class Empleado
     private $telefonos = [];
 
     public function __construct(
-       private String $nombre,
-       private String $apellidos,
-       //Para poner un valor por defecto en el constructor:
-       private float $sueldo = 1000
-    ){}
+        private String $nombre,
+        private String $apellidos,
+        //Para poner un valor por defecto en el constructor:
+        private float $sueldo = 1000
+    ) {
+    }
 
     public function getNombre()
     {
@@ -42,7 +44,7 @@ class Empleado
 
     public function getNombreCompleto(): string
     {
-        return $this->nombre . $this->apellidos;
+        return $this->nombre . " " . $this->apellidos;
     }
 
     public function debePagarImpuestos(): bool
@@ -60,12 +62,12 @@ class Empleado
     }
 
     public function listarTelefonos(): string
-    {        
-        if(!empty($this->telefonos)){
+    {
+        if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return "Teléfonos: " . implode(", ", $this->telefonos);
-        }else{
-            return "No hay teléfonos guardados"; 
+            return  implode(", ", $this->telefonos);
+        } else {
+            return "No hay teléfonos guardados";
         }
     }
 
@@ -74,8 +76,3 @@ class Empleado
         unset($this->telefonos);
     }
 }
-
-//PRUEBAS: 
-// $trabajador = new Empleado("Laura", "Valiente Cruz", 2000); 
-
-// echo $trabajador->getNombreCompleto() . ", sueldo: " . $trabajador->getSueldo();

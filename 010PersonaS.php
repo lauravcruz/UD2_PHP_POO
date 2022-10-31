@@ -33,7 +33,7 @@ class Persona
 
     public function getNombreCompleto(): string
     {
-        return $this->nombre . $this->apellidos;
+        return $this->nombre . " " . $this->apellidos;
     }
 
     public static function toHtml(Persona $p): string

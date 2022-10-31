@@ -53,7 +53,7 @@ class EmpleadoTelefono
 
     public function getNombreCompleto(): string
     {
-        return $this->nombre . $this->apellidos;
+        return $this->nombre . " " . $this->apellidos;
     }
 
     public function debePagarImpuestos(): bool
@@ -74,7 +74,7 @@ class EmpleadoTelefono
     {
         if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return "Teléfonos: " . implode(", ", $this->telefonos);
+            return  implode(", ", $this->telefonos);
         } else {
             return "No hay teléfonos guardados";
         }
@@ -85,14 +85,3 @@ class EmpleadoTelefono
         unset($this->telefonos);
     }
 }
-
-//PRUEBAS: 
-//  $trabajador1 = new EmpleadoTelefono();
-//  $trabajador1->setNombre("Laura");
-//  $trabajador1->setApellidos("Valiente Cruz");
-//  $trabajador1->setSueldo(5555);
-//  $trabajador1->anyadirTelefono(66666666);
-//  $trabajador1->anyadirTelefono(6666666);
-//  echo $trabajador1->listarTelefonos();
-//  $trabajador1->vaciarTelefonos();
-//  echo $trabajador1->listarTelefonos();

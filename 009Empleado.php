@@ -61,7 +61,7 @@ class Empleado extends Persona
     {
         if (!empty($this->telefonos)) {
             //Implode imprime los valores de un array. En el primer parámetro indicamos el separador
-            return "Teléfonos: " . implode(", ", $this->telefonos);
+            return  implode(", ", $this->telefonos);
         } else {
             return "No hay teléfonos guardados";
         }
@@ -96,13 +96,3 @@ class Empleado extends Persona
         }
     }
 }
-
-//PRUEBAS:
-// $trabajador1 = new Empleado("Laura", "Valiente Cruz", 25, 4000);
-
-// $trabajador1->anyadirTelefono(666666);
-// $trabajador1->anyadirTelefono(6666666);
-
-// echo $trabajador1->toHtml($trabajador1) . intval($trabajador1->debePagarImpuestos());
-// $trabajador2 = new Empleado("Laura", "Valiente Cruz", 20, 4000);
-// echo $trabajador2->toHtml($trabajador2) . intval($trabajador2->debePagarImpuestos());
